@@ -1,0 +1,62 @@
+ # login
+ curl -X POST http://localhost:8080/users/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "gitawulandari1",
+    "password": "SecurePassword123!"
+}'
+
+# Run Payroll (admin only)
+curl -X POST http://localhost:8080/timeclock/payroll/run \
+  -H "Authorization: Bearer {{TOKEN}}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "start": "2025-01-01",
+    "end": "2025-01-31"
+}'
+
+# POST /timeclock/add-period
+curl -X POST http://localhost:8080/timeclock/add-period \
+  -H "Authorization: Bearer <YOUR_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_id": 1,
+    "checkin_date": "2025-06-19"
+  }'
+
+
+# POST /timeclock/clock-in
+curl -X POST http://localhost:8080/timeclock/clock-in \
+  -H "Authorization: Bearer <YOUR_TOKEN>"
+
+# POST /timeclock/clock-out
+curl -X POST http://localhost:8080/timeclock/clock-out \
+  -H "Authorization: Bearer <YOUR_TOKEN>"
+
+# POST /timeclock/overtime
+curl -X POST http://localhost:8080/timeclock/overtime \
+  -H "Authorization: Bearer <YOUR_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ot_date": "2025-06-19T00:00:00Z",
+    "hours": 2,
+    "reason": "Lembur testing payroll"
+  }'
+
+# POST /timeclock/reimbursement
+curl -X POST http://localhost:8080/timeclock/reimbursement \
+  -H "Authorization: Bearer <YOUR_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "amount": 500000,
+    "description": "Transport ke klien",
+    "period": "2025-06-19"
+  }'
+
+# GET /timeclock/payslip/self?month=6&year=2025
+curl "http://localhost:8080/timeclock/payslip/self?month=6&year=2025" \
+  -H "Authorization: Bearer <YOUR_TOKEN>"
+
+#GET /timeclock/payslip/all?month=6&year=2025
+curl "http://localhost:8080/timeclock/payslip/all?month=6&year=2025" \
+  -H "Authorization: Bearer <YOUR_TOKEN>"

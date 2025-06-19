@@ -1,0 +1,27 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+      {
+        "name": "Run All Tests",
+        "type": "go",
+        "request": "launch",
+        "mode": "test",
+        "program": "${workspaceFolder}",
+        "env": {},
+        "args": ["-v", "-count=1"],  // Adds verbosity to the test output
+        "showLog": true
+      },
+      {
+        "name": "Debug All Tests",
+        "type": "go",
+        "request": "launch",
+        "mode": "test",
+        "program": "${workspaceFolder}",
+        "env": {},
+        "args": ["-v", "-count=1"],  // Adds verbosity to the test output
+        "showLog": true,
+        "stopOnEntry": true 
+      }
+    ]
+  }
+  
